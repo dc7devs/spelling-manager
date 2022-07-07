@@ -1,19 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-
 #include "dicionario.h"
+
 char filename[] = "resource-file/brazilian.txt";
 
-void DictionaryMain() {
+void LoadDictionary() {
 	FILE *fileDictionary;
 	openAndVerifyFile(&fileDictionary, filename, "r");
-
-    /* O dicionário deve ser totalmente carregado em um vetor de palavras na memória
-	 * RAM antes de ser usado, usando alocação dinâmica (os mais ousados podem tentar
-	 * implementar este projeto usando uma árvore de prefixos).
-	 */
 
     struct stat sb;
     if (stat(filename, &sb) == -1) {
@@ -21,82 +12,79 @@ void DictionaryMain() {
         exit(1);
     }
 
-    No *root = NULL;
-    char *stringWord = (char*) malloc(sb.st_size);
+    root = NULL;
+    String keyword = (char*) malloc(sb.st_size);
 
-    while (fscanf(fileDictionary, "%[^\n] ", stringWord) != EOF) {
-		root = insert(root, stringWord);
+    while (fscanf(fileDictionary, "%[^\n ] ", keyword) != EOF) {
+        insert(&root, keyword);
     }
 
-    printOut(root);
+    // TESTES BUSCA =================================================================================== //
 
-    // A localização das palavras no dicionário deve usar um algoritmo de busca binária.
+    // time_t t_ini, t_fim;
+    // float tempo;
+    
+    // t_ini = time(NULL);
 
-    free(root);
+    // String wordOut = (char*) malloc(sb.st_size);
+    // printf("%d", search(root, "carrilhões", wordOut));
+
+    // t_fim = time(NULL); 
+
+    // tempo = difftime(t_fim, t_ini); 
+    // printf("\nTempo: %.3f", tempo);
+
+    // TESTES BUSCA =================================================================================== //
+
 	fclose(fileDictionary);
 }
-
-No* insert(No *root, char* word) {
-    if(root == NULL) {
-        No *novo = (No*) malloc(sizeof(No));
-        strcpy(novo->pointWord, word);
-        novo->left = NULL;
-        novo->right = NULL;
-        return novo;
-    } else {
-        if(strcmp(word, root->pointWord) < 0)
-            root->left = insert(root->left, word);
-        if(strcmp(word, root->pointWord) > 0)
-            root->right = insert(root->right, word);
-        return root;
-    }
+ 
+// Função de utilitário para criar um novo nó de árvore de pesquisa ternária
+No* create(char character) {
+    No* NewNo = (No*) malloc(sizeof( No ));
+    NewNo->character = character;
+    NewNo->left = NewNo->eq = NewNo->right = NULL;
+    return NewNo;
 }
 
-// Fins de teste
-void printOut(No *root) {
-    if(root != NULL) {
-        printOut(root->left);
-        printf("%s\n", root->pointWord);
-        printOut(root->left);
-    }
-}
+// Função para inserir uma nova palavra em uma árvore de busca ternária
+void insert(No **root, char *keyword) {
+    int sizeWord = strlen(keyword);
 
-int search(No *raiz, char *chave) {
-    if(raiz == NULL) {
-        return 0;
-    } else {
-        if(strcmp(raiz->pointWord, chave) == 0)
-            return 1;
-        else {
-            if(strcmp(chave, raiz->pointWord) < 0)
-                return search(raiz->left, chave);
-            else
-                return search(raiz->right, chave);
+    // Caso Base: A árvore está vazia
+    if (!(*root))
+        *root = create(*keyword);
+
+    if ((*keyword) < (*root)->character)
+        insert(&( (*root)->left ), keyword);
+    else if ((*keyword) > (*root)->character)
+        insert(&( (*root)->right ), keyword);
+    else {
+        if (*(keyword+1)) {
+            insert(&((*root)->eq), keyword+1);
         }
     }
 }
 
-int size(No *raiz) {
-    if(raiz == NULL)
-        return 0;
-    else
-        return 1 + size(raiz->left) + size(raiz->right);
-}
+// Função para pesquisar uma determinada palavra em uma árvore de busca ternária
+bool search(No *root, char *keyword, char *linkword) {
+    if (!root)
+        return false;
+ 
+    if (*keyword < root->character) {
+        return search(root->left, keyword, linkword);
 
-int levenshtein(const char *s1, const char *s2) {
-    unsigned int s1len, s2len, x, y, lastdiag, olddiag;
-    s1len = strlen(s1);
-    s2len = strlen(s2);
-    unsigned int column[s1len + 1];
-    for (y = 1; y <= s1len; y++)
-        column[y] = y;
-    for (x = 1; x <= s2len; x++) {
-        column[0] = x;
-        for (y = 1, lastdiag = x - 1; y <= s1len; y++) {
-            olddiag = column[y];
-            column[y] = MIN3(column[y] + 1, column[y - 1] + 1, lastdiag + (s1[y-1] == s2[x - 1] ? 0 : 1));
-            lastdiag = olddiag;
+    } else if (*keyword > root->character) {
+        return search(root->right, keyword, linkword);
+    } else {
+        if (*(keyword+1) == '\0') {
+            *linkword = root->character;
+            *(linkword+1) = '\0';
+            return true;
         }
+
+        *linkword = root->character;
+        *linkword++;
+        return search(root->eq, keyword+1, linkword);
     }
-    return column[s1len];
 }

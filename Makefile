@@ -1,4 +1,4 @@
-TARGET=app
+TARGET=ortografia
 C_SOURCE=$(wildcard *.c)
 OBJS=$(C_SOURCE:.c=.o)
 CC=g++
