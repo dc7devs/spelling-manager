@@ -51,6 +51,6 @@ Para roda o <a href="https://pt.wikipedia.org/wiki/Interface_de_linha_de_comando
 
 ```bash
 
-$ ./ortografica -i input.txt -o output.txt
+$ ./ortografia -i input.txt -o output.txt
 
 ```
