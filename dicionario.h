@@ -20,15 +20,14 @@ typedef struct no {
     struct no *left, *eq, *right;
 } No;
 
-No *root;
-
 void openAndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
 int levenshtein(const char *s1, const char *s2);
 
-void LoadDictionary();
+No* LoadDictionary();
 
 No* create(char character);
 void insert(No **root, char *keyword);
-bool search(No *root, char *keyword, char *linkword);
+// bool search(No *root, char *keyword, char *linkword);
+bool search(No *root, char *keyword);
 
 #endif

@@ -2,41 +2,25 @@
 
 char filename[] = "resource-file/brazilian.txt";
 
-void LoadDictionary() {
-	FILE *fileDictionary;
-	openAndVerifyFile(&fileDictionary, filename, "r");
+No* LoadDictionary() {
+	FILE *FileDictionary;
+	openAndVerifyFile(&FileDictionary, filename, "r");
 
-    struct stat sb;
-    if (stat(filename, &sb) == -1) {
+    struct stat fDictionary;
+    if (stat(filename, &fDictionary) == -1) {
         perror("> Error in struct stat");
         exit(1);
     }
 
-    root = NULL;
-    String keyword = (char*) malloc(sb.st_size);
+    No *root = NULL;
+    String keyword = (char*) malloc(fDictionary.st_size);
 
-    while (fscanf(fileDictionary, "%[^\n ] ", keyword) != EOF) {
+    while (fscanf(FileDictionary, "%[^\n ] ", keyword) != EOF) {
         insert(&root, keyword);
     }
 
-    // TESTES BUSCA =================================================================================== //
-
-    // time_t t_ini, t_fim;
-    // float tempo;
-    
-    // t_ini = time(NULL);
-
-    // String wordOut = (char*) malloc(sb.st_size);
-    // printf("%d", search(root, "carrilhões", wordOut));
-
-    // t_fim = time(NULL); 
-
-    // tempo = difftime(t_fim, t_ini); 
-    // printf("\nTempo: %.3f", tempo);
-
-    // TESTES BUSCA =================================================================================== //
-
-	fclose(fileDictionary);
+	fclose(FileDictionary);
+    return root;
 }
  
 // Função de utilitário para criar um novo nó de árvore de pesquisa ternária
@@ -66,25 +50,21 @@ void insert(No **root, char *keyword) {
     }
 }
 
-// Função para pesquisar uma determinada palavra em uma árvore de busca ternária
-bool search(No *root, char *keyword, char *linkword) {
+// Função para pesquisar uma determinada palavra na árvore de busca ternária
+bool search(No *root, char *keyword) {
     if (!root)
         return false;
  
     if (*keyword < root->character) {
-        return search(root->left, keyword, linkword);
+        return search(root->left, keyword);
 
     } else if (*keyword > root->character) {
-        return search(root->right, keyword, linkword);
+        return search(root->right, keyword);
     } else {
         if (*(keyword+1) == '\0') {
-            *linkword = root->character;
-            *(linkword+1) = '\0';
             return true;
         }
 
-        *linkword = root->character;
-        *linkword++;
-        return search(root->eq, keyword+1, linkword);
+        return search(root->eq, keyword+1);
     }
 }
