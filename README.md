@@ -1,4 +1,4 @@
-# 📖 Verificador Ortografico
+# 📖 Verificador ortográfico
 
 Este projeto consiste em um verificador ortográfico, um <a href="https://pt.wikipedia.org/wiki/Interface_de_linha_de_comandos">CLI</a> que recebe um texto como entrada e produz o mesmo texto em um novo arquivo de saída. As palavras potencialmente incorretas são indicadas entre colchetes ([...]). Uma palavra é considerada potencialmente incorreta se não for encontrada em um arquivo de dicionário. O verificador ortografico também sugerir correções, indicando uma plavra mais próxima, e pode ser visualizada seguindo o seguinte modelo:
 
