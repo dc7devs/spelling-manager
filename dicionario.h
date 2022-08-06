@@ -9,39 +9,28 @@
 #include <locale.h>
 #include <time.h>
 #include <stdbool.h>
-#include <sys/stat.h>
 
 #define MIN3(a, b, c) ((a) < (b) ? ((a) < (c) ? (a) : (c)) : ((b) < (c) ? (b) : (c)))
 #define MAX_SIZE_WORD 47
 
 typedef char* String;
 
-// Arovor ternaria
+// Arvore ternária
 typedef struct no {
     int character;
     struct no *left, *eq, *right;
-} No; // tTree
+} No;
 
-// Lista encadeada
-// typedef struct no {
-//     char word[47];
-//     struct no *next;
-// } No;
-
-// Assistent functions
-void openAndVerifyFile(FILE **filePGM, char filePath[], char operation[]);
-int levenshtein(const char *s1, const char *s2);
-String changeLowerCase(char *changedWord);
+// Funções de assistencia
+void openAndVerifyFile(FILE **filePGM, String filePath, String operation);
+int levenshtein(const String s1, const String s2);
+String changeLowerCase(String changedWord);
 
 No* LoadDictionary();
 
-// Arvore ternaria
+// Funções relativas a arvore ternária
 No* create(char character);
-void insert(No **root, char *keyword);
-bool search(No *root, char *keyword);
-
-// Lista encadeada
-// void insert(No **list, char *keyword);
-// String search(No *list, char *keyword, unsigned long int start, unsigned long int end);
+void insert(No **root, String keyword);
+bool search(No *root, String keyword);
 
 #endif
