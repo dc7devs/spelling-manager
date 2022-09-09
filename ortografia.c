@@ -14,7 +14,7 @@ int main(int argc, String argv[]) {
 	regex_t regex;
 	int returnRegex;
 	
-	// percorrendo o arquivo
+	// going through the file
 	while (fscanf(inputFile, "%c", characterTxt) != EOF) {
 		returnRegex = regcomp(&regex, "[A-Za-zÀ-ú]", 0);
 		returnRegex = regexec(&regex, characterTxt, 0, NULL, 0);
@@ -65,7 +65,7 @@ String changeLowerCase(String wordTBChange) {
 	return changedWord;
 }
 
-// Função para medir distancia entre duas strings (função de assistência)
+// Function to measure distance between two strings (assistance function)
 int levenshtein(const String s1, const String s2) {
     unsigned int s1len, s2len, x, y, lastdiag, olddiag;
     s1len = strlen(s1);

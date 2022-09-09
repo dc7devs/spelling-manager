@@ -15,7 +15,7 @@
 
 typedef char* String;
 
-// Arvore ternária
+// ternary tree
 typedef struct no {
     int character;
     struct no *left, *eq, *right;
@@ -28,7 +28,7 @@ String changeLowerCase(String changedWord);
 
 No* LoadDictionary();
 
-// Funções relativas a arvore ternária
+// Functions related to ternary tree
 No* create(char character);
 void insert(No **root, String keyword);
 bool search(No *root, String keyword);
