@@ -2,7 +2,6 @@
 
 char filename[] = "resource-file/brazilian.txt";
 
-// Carregar dicionário de palavra (declaração)
 No* LoadDictionary() {
 	FILE *FileDictionary;
 	openAndVerifyFile(&FileDictionary, filename, "r");
@@ -18,7 +17,6 @@ No* LoadDictionary() {
     return root;
 }
 
-// Função de utilitário para criar um novo nó de árvore de pesquisa ternária
 No* create(char character) {
     No* NewNo = (No*) malloc(sizeof( No ));
     NewNo->character = character;
@@ -26,7 +24,6 @@ No* create(char character) {
     return NewNo;
 }
 
-// Função para inserir uma nova palavra em uma árvore de busca ternária
 void insert(No **root, String keyword) {
     int sizeWord = strlen(keyword);
     if (!(*root))
@@ -42,7 +39,6 @@ void insert(No **root, String keyword) {
     }
 }
 
-// Função para pesquisar uma determinada palavra na árvore de busca ternária
 bool search(No *root, String keyword) {
     if (!root)
         return NULL;
