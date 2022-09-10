@@ -1,6 +1,6 @@
 # 📖 Verificador ortográfico
 
-Este projeto consiste em um verificador ortográfico, um <a href="https://pt.wikipedia.org/wiki/Interface_de_linha_de_comandos">CLI</a> que recebe um texto como entrada e produz o mesmo texto em um novo arquivo de saída indicando palavras possivelmente icorretas. As palavras potencialmente incorretas são indicadas entre colchetes ([...]). Uma palavra é considerada potencialmente incorreta se não for encontrada em um arquivo de dicionário. O verificador ortografico também sugere correções, indicando uma plavra mais próxima, e pode ser visualizada seguindo o seguinte modelo:
+Este projeto consiste em um verificador ortográfico, um <a href="https://pt.wikipedia.org/wiki/Interface_de_linha_de_comandos">CLI</a> que recebe um texto como entrada e produz o mesmo texto em um novo arquivo de saída indicando palavras possivelmente incorretas. As palavras potencialmente incorretas são indicadas entre colchetes ([...]). Uma palavra é considerada potencialmente incorreta se não for encontrada em um arquivo de dicionário. O verificador ortográfico também sugere correções, indicando uma palavra mais próxima, e pode ser visualizada seguindo o seguinte modelo:
 
 ```
 Desenvolvimeto de [Sofware(Software)]
@@ -30,7 +30,8 @@ possivelmente restaurar o contexto de outra tarefa, previamente
 salvo em outro [TCB (aba)], é denominado "troca de contexto".
 ```
 
-## 🧩 ETAPAS DO PROJETO
+<details>
+<summary><h2>🧩 ETAPAS DO PROJETO</h2></summary>
 
 - [x] CONFIGURAÇÕES INICIAIS
     - [x] CONFIGURAÇÃO DE ARQUIVO [MAKEFILE](Makefile)
@@ -45,6 +46,7 @@ salvo em outro [TCB (aba)], é denominado "troca de contexto".
     - [x] LEITURA DO ARQUIVO (.txt) COMO DICIONÁRIO DE PALAVRAS
     - [x] CRIAR VETOR DE PALAVRAS COM ALOCAÇÃO DINÂMICA OU IMPLEMENTAR A ÁRVORE DE PREFIXOS
     - [x] BUSCA BINÁRIA PARA LOCALIZAÇÃO DAS PALAVRAS JA ARMAZENADAS NA MEMÓRIA
+</details>
 
 ## ⚙ RODANDO O PROGRAMA
 Para roda o <a href="https://pt.wikipedia.org/wiki/Interface_de_linha_de_comandos">CLI</a> no terminal linux basta seguir as seguintes instruções
