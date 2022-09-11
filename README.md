@@ -31,7 +31,7 @@ salvo em outro [TCB (aba)], é denominado "troca de contexto".
 ```
 
 <details>
-<summary><h2>🧩 ETAPAS DO PROJETO</h2></summary>
+<summary><h2>🧩 ETAPAS DO DESENVOLVIMENTO DO PROJETO</h2></summary>
 
 - [x] Configurações Iniciais
     - [x] Configuração de Arquivo [Makefile](Makefile)
