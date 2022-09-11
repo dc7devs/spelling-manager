@@ -41,7 +41,6 @@ salvo em outro [TCB (aba)], é denominado "troca de contexto".
     - [x] Carregar vetor de palavras/árvore de prefixos
     - [x] Filtrar as palavras do arquivo de entrada(Obs: Incluindo aas com acentos)
     - [x] Funcionalidade para percorrer o arquivo de entrada e comparar as palavras filtradas com as do vetor([o dicionário](resource-file/brazilian.txt))
-    - [ ] FUNCIONALIDADE PARA SUEGERIR CORREÇÃO UTILIZANDO O ALGORITIMO DE LEVENSHTEIN + BUSCA BINÁRIA
     - [ ] Funcionalidade para sugerir correções utilizando o algoritimo de `Levenshtein` + `Binary search`
 - [x] Dicionário
     - [x] Leitura do arquivo (.txt) como dicionário de palavras
