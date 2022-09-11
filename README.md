@@ -33,19 +33,20 @@ salvo em outro [TCB (aba)], é denominado "troca de contexto".
 <details>
 <summary><h2>🧩 ETAPAS DO PROJETO</h2></summary>
 
-- [x] CONFIGURAÇÕES INICIAIS
-    - [x] CONFIGURAÇÃO DE ARQUIVO [MAKEFILE](Makefile)
-    - [x] FUNCIONALIDADE PARA LEITURA DOS ARQUIVOS (.txt) PELO TERMINAL
-    - [x] FUNCIONALIDADE PARA GERAR O ARQUIVO DE SAIDA (.txt) COM NOME ESPECIFICADO, PASSADO COMO ARGUMENTO PELO TERMINAL 
-- [ ] ORTOGRAFIA
-    - [x] CARREGAR VETOR DE PALAVRAS/ÁRVORE DE PREFIXOS
-    - [x] FILTRAR AS PALAVRAS DO ARQUIVO DE ENTRADA(OBS: INCLUINDO AS COM ACENTOS)
-    - [x] FUNCIONALIDADE PARA PERCORRER O ARQUIVO DE ENTRADA E COMPARAR AS PALAVRAS FILTRADAS COM AS DO VETOR([O DICIONÁRIO](resource-file/brazilian.txt))
+- [x] Configurações Iniciais
+    - [x] Configuração de Arquivo [Makefile](Makefile)
+    - [x] Funcionalidade para leitura dos arquivos em formato '.txt', pelo terminal
+    - [x] Funcionalidade para gerar o arquivo de saída em formato '.txt' com nome especificado, passado como flag pelo terminal
+- [ ] Ortografia
+    - [x] Carregar vetor de palavras/árvore de prefixos
+    - [x] Filtrar as palavras do arquivo de entrada(Obs: Incluindo aas com acentos)
+    - [x] Funcionalidade para percorrer o arquivo de entrada e comparar as palavras filtradas com as do vetor([o dicionário](resource-file/brazilian.txt))
     - [ ] FUNCIONALIDADE PARA SUEGERIR CORREÇÃO UTILIZANDO O ALGORITIMO DE LEVENSHTEIN + BUSCA BINÁRIA
-- [x] DICIONÁRIO
-    - [x] LEITURA DO ARQUIVO (.txt) COMO DICIONÁRIO DE PALAVRAS
-    - [x] CRIAR VETOR DE PALAVRAS COM ALOCAÇÃO DINÂMICA OU IMPLEMENTAR A ÁRVORE DE PREFIXOS
-    - [x] BUSCA BINÁRIA PARA LOCALIZAÇÃO DAS PALAVRAS JA ARMAZENADAS NA MEMÓRIA
+    - [ ] Funcionalidade para sugerir correções utilizando o algoritimo de `Levenshtein` + `Binary search`
+- [x] Dicionário
+    - [x] Leitura do arquivo (.txt) como dicionário de palavras
+    - [x] Criar vetor de palavras com alocação dinânmica ou implementar a árvore de prefixos
+    - [x] Busca binária para localização das palavras já armazenadas na memória
 </details>
 
 ## ⚙ RODANDO O PROGRAMA
